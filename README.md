@@ -2,6 +2,13 @@
 
 A full-stack mental wellness journaling application with AI-powered chat support, mood tracking, and journaling features.
 
+## 🚀 Live Deployment
+
+- **Frontend:** https://mental-health-journal-delta.vercel.app
+- **Backend API:** https://mental-health-journal-dlum.onrender.com
+
+> **Try the app live!** Visit the frontend URL to start using the Mental Wellness App.
+
 ## Features
 
 - 🔐 **User Authentication** - JWT-based secure authentication
