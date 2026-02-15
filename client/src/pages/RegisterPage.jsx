@@ -22,7 +22,7 @@ const RegisterPage = () => {
             console.error("Registration Error:", err);
             // Check for specific error types
             if (err.code === "ERR_NETWORK") {
-                setError("Network Error: Could not connect to server. Is the backend running on port 5000?");
+                setError("Network Error: Could not connect to backend server. Please try again.");
             } else {
                 setError(err.response?.data?.message || 'Registration failed - Check console for details');
             }
