@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 // API base URL configuration
-// - Development: Use localhost:5001 directly
+// - Development: Use environment variable or production URL
 // - Production: Use environment variable
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://mental-health-journal-dlum.onrender.com/api';
 
 // Create axios instance
 const api = axios.create({
