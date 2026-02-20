@@ -137,10 +137,10 @@ Frontend will run on `http://localhost:5173`
 
 ### Important for Production
 
-- Update `CLIENT_URL` in server `.env` to your deployed frontend URL
-- Update `VITE_API_URL` in client `.env` to your deployed backend URL
-- Ensure CORS is properly configured
-- Use strong JWT_SECRET (minimum 32 characters)
+- **Backend CORS**: Update `CLIENT_URL` in the server hosting dashboard (e.g. Render) to your exact frontend Vercel URL (with `https://` and **NO trailing slash**).
+- **Frontend API Config**: Update `VITE_API_URL` in the frontend hosting dashboard (e.g. Vercel) to your exact backend Render URL **AND append `/api` to the end of it** (e.g. `https://your-backend-url.onrender.com/api`).
+- **Cross-Domain Cookies (Important!)**: Ensure the backend `NODE_ENV` is set strictly to `production`. This triggers `sameSite: 'none'` and `secure: true` for the JWT cookie, which is strictly required for Vercel and Render to exchange auth state.
+- Use a strong `JWT_SECRET` (minimum 32 characters).
 
 ## API Endpoints
 
