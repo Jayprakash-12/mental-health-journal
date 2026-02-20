@@ -48,7 +48,7 @@ const SettingsPage = () => {
         setPasswordLoading(true);
 
         try {
-            await api.put('/api/user/password', {
+            await api.put('/user/password', {
                 currentPassword: passwordData.currentPassword,
                 newPassword: passwordData.newPassword,
             });
@@ -208,7 +208,7 @@ const SettingsPage = () => {
                                     <button
                                         onClick={async () => {
                                             try {
-                                                await api.delete('/api/user/account');
+                                                await api.delete('/user/account');
                                                 logout();
                                             } catch (error) {
                                                 console.error('Failed to delete account:', error);

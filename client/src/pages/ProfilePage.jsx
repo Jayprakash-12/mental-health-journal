@@ -34,7 +34,7 @@ const ProfilePage = () => {
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                const response = await api.get('/api/user/stats');
+                const response = await api.get('/user/stats');
                 console.log('Stats API response:', response.data);
                 if (response.data && response.data.stats) {
                     setStats({
@@ -63,7 +63,7 @@ const ProfilePage = () => {
     const handleSave = async () => {
         setIsSaving(true);
         try {
-            await api.put('/api/user/profile', { name: formData.name });
+            await api.put('/user/profile', { name: formData.name });
             setIsEditing(false);
             // Update local user state if needed
         } catch (error) {
