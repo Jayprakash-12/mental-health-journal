@@ -4,7 +4,7 @@ A full-stack mental wellness journaling application with AI-powered chat support
 
 ### 🌐 Live Deployment
 - **Frontend (Vercel)**: [https://mental-health-journal-delta.vercel.app](https://mental-health-journal-delta.vercel.app)
-- **Backend API (Render)**: [https://mental-health-journal-cjwu.onrender.com/api](https://mental-health-journal-cjwu.onrender.com/api)
+- **Backend API (Render)**: [https://mental-health-journal-cjwu.onrender.com/api](https://mental-health-journal-cjwu.onrender.com)
 
 
 ## Features
