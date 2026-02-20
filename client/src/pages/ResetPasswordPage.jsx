@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Lock, Eye, EyeOff, CheckCircle, AlertCircle, Heart } from 'lucide-react';
-import axios from 'axios';
+import api from '../services/api';
 
 const ResetPasswordPage = () => {
     const { token } = useParams();
@@ -32,7 +32,7 @@ const ResetPasswordPage = () => {
         setIsLoading(true);
 
         try {
-            await axios.post(`/api/auth/reset-password/${token}`, { password });
+            await api.post(`/auth/reset-password/${token}`, { password });
             setSuccess(true);
             setTimeout(() => {
                 navigate('/login');

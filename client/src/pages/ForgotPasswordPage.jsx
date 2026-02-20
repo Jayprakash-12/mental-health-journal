@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, ArrowLeft, CheckCircle, AlertCircle, Heart } from 'lucide-react';
-import axios from 'axios';
+import api from '../services/api';
 
 const ForgotPasswordPage = () => {
     const [email, setEmail] = useState('');
@@ -17,10 +17,19 @@ const ForgotPasswordPage = () => {
         setError('');
 
         try {
-            const response = await axios.post('/api/auth/forgot-password', { email });
+            const response = await api.post('/auth/forgot-password', { email });
             setSuccess(true);
+
             // For development only - shows reset link
-            setResetInfo(response.data);
+            // We construct the URL dynamically based on the current window location
+            // so Vercel deployments will work correctly instead of using localhost
+            const resetToken = response.data.resetToken;
+            const dynamicResetUrl = `${window.location.origin}/reset-password/${resetToken}`;
+
+            setResetInfo({
+                ...response.data,
+                resetUrl: dynamicResetUrl
+            });
         } catch (err) {
             setError(err.response?.data?.message || 'Something went wrong');
         } finally {
@@ -135,7 +144,7 @@ const ForgotPasswordPage = () => {
                                         to={`/reset-password/${resetInfo.resetToken}`}
                                         className="text-emerald-600 text-sm break-all hover:underline"
                                     >
-                                        Click here to reset password
+                                        {resetInfo.resetUrl}
                                     </Link>
                                 </div>
                             )}
