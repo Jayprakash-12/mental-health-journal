@@ -4,7 +4,7 @@ import app from './src/app.js';
 
 dotenv.config();
 
-const PORT = 5001; // Hardcoded to prevent .env caching issues
+const PORT = process.env.PORT || 5001;
 
 // Connect to MongoDB
 const connectDB = async () => {
