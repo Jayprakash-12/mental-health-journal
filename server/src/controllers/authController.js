@@ -45,7 +45,7 @@ export const registerUser = async (req, res, next) => {
             res.cookie('jwt', token, {
                 httpOnly: true,
                 secure: process.env.NODE_ENV !== 'development', // Use secure cookies in production
-                sameSite: 'strict',
+                sameSite: process.env.NODE_ENV === 'development' ? 'lax' : 'none', // Must be 'none' for cross-domain in prod
                 maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
             });
 
@@ -86,8 +86,7 @@ export const loginUser = async (req, res, next) => {
             res.cookie('jwt', token, {
                 httpOnly: true,
                 secure: process.env.NODE_ENV !== 'development',
-                sameSite: 'lax', // Relaxed for development stability
-                // sameSite: 'none', // Use this if cross-domain in production (requires secure: true)
+                sameSite: process.env.NODE_ENV === 'development' ? 'lax' : 'none', // Must be 'none' for cross-domain in prod
                 maxAge: 30 * 24 * 60 * 60 * 1000,
             });
 
